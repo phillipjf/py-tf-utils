@@ -19,20 +19,17 @@ fi
 OUT_PATH=$MOD_PATH/TF_DOCS.md
 # Need to escape the pipe character since we are creating markdown tables
 VALUES=$(terraform-config-inspect --json ${MOD_PATH} | sed -e 's/|/\\\\|/g')
-TITLE="# $(basename $MOD_PATH)\n"
-INPUTS_HEADER="
-## Inputs\n\n
-| Name | Description | Type | Default | Required |\n
-|------|-------------|:----:|:-----:|:-----:|
-"
-OUTPUTS_HEADER="
-## Output\n\n
-| Name | Description |\n
-|------|-------------|
-"
+TITLE="# $(basename $MOD_PATH)"
+INPUTS_HEADER="\n## Inputs\n\n| Name | Description | Type | Default | Required |\n|------|-------------|:----:|:-----:|:-----:|"
+OUTPUTS_HEADER="\n## Output\n\n| Name | Description |\n|------|-------------|"
 
-INPUTS=$(echo ${VALUES} | jq -r '.variables | .[] | .type = (if has("type") then .type else "string" end) | .required = (has("default") | not) | "| \(.name) | \(.description) | \(.type) | \(.default) | \(.required ) |\\n"')
-OUTPUTS=$(echo ${VALUES} | jq -r '.outputs | .[] | "| \(.name) | \(.description) |\\n"')
+INPUTS=$(echo ${VALUES} | jq -r '.variables | .[] | .type = (if has("type") then .type else "string" end) | .required = (has("default") | not) | "| \(.name) | \(.description) | \(.type) | \(.default) | \(.required ) |+EOTF"')
+OUTPUTS=$(echo ${VALUES} | jq -r '.outputs | .[] | "| \(.name) | \(.description) |+EOTF"')
+
+# jq seems to add a space to each line, so we trim and split it here
+# hoping that '+EOTF' is a unique enough string to split on.
+INPUTS=$(echo ${INPUTS} | sed -e 's/+EOTF /\\n/g')
+OUTPUTS=$(echo ${OUTPUTS} | sed -e 's/+EOTF /\\n/g')
 
 echo -e $TITLE > $OUT_PATH
 echo -e $INPUTS_HEADER >> $OUT_PATH
