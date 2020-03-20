@@ -22,3 +22,8 @@ To test with the example:
 ```sh
 ./gen-docs.sh example/
 ```
+
+## Background
+
+- [Using terraform-docs to keep your module documentation in sync](https://www.davidbegin.com/using-terraform-docs-to-automate-keeping-your-terraform-modules-documenting/)
+- [Finding unused variables in a Terraform module](https://alexwlchan.net/2019/05/finding-unused-variables-in-a-terraform-module/)
