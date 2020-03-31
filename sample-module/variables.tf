@@ -1,59 +1,61 @@
 variable unquoted {}
 
-variable "string-3" {
+variable string_3 {
   default = ""
 }
 
-variable "string-2" {
+variable string_2 {
   description = "It's string number two."
-  type        = "string"
+  type        = string
 }
 
 // It's string number one.
-variable "string-1" {
+variable string_1 {
   default = "bar"
 }
 
-variable "map-3" {
+variable map_3 {
   default = {}
 }
 
-variable "map-2" {
-  description = "It's map number two."
-  type        = "map"
+variable map_of_strings {
+  description = "It's a map of strings."
+  type        = map(string)
+}
+
+variable map_of_any {
+  description = "It's a map of any."
+  type        = map(any)
 }
 
 // It's map number one.
-variable "map-1" {
+variable map_1 {
   default = {
     a = 1
     b = 2
     c = 3
   }
 
-  type = "map"
+  type = map(string)
 }
 
-variable "list-3" {
+variable list_3 {
   default = []
 }
 
-variable "list-2" {
+variable list_2 {
   description = "It's list number two."
-  type        = "list"
+  type        = list(string)
 }
 
 // It's list number one.
-variable "list-1" {
+variable list_1 {
   default = ["a", "b", "c"]
-  type    = "list"
+  type    = list(string)
 }
 
-// A variable with underscores.
-variable "input_with_underscores" {}
-
 // A variable with pipe in the description
-variable "input-with-pipe" {
+variable input_with_pipe {
   description = "It includes v1 | v2 | v3"
   default     = "v1"
 }
