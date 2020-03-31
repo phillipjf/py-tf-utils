@@ -1,26 +1,37 @@
-# tf-docs
+# py-tf-utils
 
-This project contains a bash script to generate documentation of Terraform libraries.
+This project contains a command-line tool for various Terraform utilities.
 
-For an example, see the `example` directory.
+For an example, see the `sample-module` directory.
 
-## Requirements
+## Installation
 
-- [Go](https://golang.org/doc/install#install)
-- `terraform-config-inspect`
-  - `go get github.com/hashicorp/terraform-config-inspect`
-- [jq](https://stedolan.github.io/jq/download/)
+```sh
+pip install py-tf-utils
+```
 
 ## Usage
 
+To test with the sample project:
+
 ```sh
-./gen-docs.sh /path/to/terraform/module
+# Will generate docs for `sample-module` and `sub-module`
+tf-utils docs sample-module
+
+# Will ONLY generate docs for `sub-module`
+tf-utils docs sample-module/sub-module/
+
+# Will show unused variables in `sample-module` and `sub-module`
+tf-utils unused sample-module
+
+# Will ONLY show unused variables in `sub-module`
+tf-utils unused sample-module/sub-module/
 ```
 
-To test with the example:
+The documentation can also be redirected to a file:
 
 ```sh
-./gen-docs.sh example/
+tf-utils docs sample-module/sub-module/ >> TF_DOCS.md
 ```
 
 ## Background

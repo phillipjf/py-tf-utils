@@ -10,6 +10,7 @@ ITEM_MAP = {
     'variables': 'var'
 }
 
+
 def get_items_in_file(path, item_type):
     try:
         print(f"Checking file {path}...")
@@ -79,8 +80,10 @@ def find_unused_variables_in_tree(root):
             if unused_items:
                 print(f"Unused {item_type} in {mod_root}:")
                 for varname, filename in unused_items.items():
-                    print(f"* {os.path.join(mod_root, filename)} ~> {label}.{varname}")
+                    filepath = os.path.join(mod_root, filename)
+                    print(f"* {filepath} ~> {label}.{varname}")
                 print("")
+
 
 if __name__ == "__main__":
     try:
