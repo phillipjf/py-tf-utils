@@ -1,11 +1,12 @@
 locals {
-    a_string = "my_test_local"
-    using_a_local = replace(local.a_string, "_", "-")
-    using_a_var = format("Using var: %s", var.string_2)
+  a_string      = "my_test_local"
+  using_a_local = replace(local.a_string, "_", "-")
+  using_a_var   = format("Using var: %s", var.string_2)
 }
 
 module "foo" {
-  source = "github.com/foo/bar"
+  source  = "hashicorp/foo/bar"
+  version = "0.0.0"
 
   id   = "1234567890"
   name = "baz"
@@ -19,8 +20,8 @@ module "foo" {
   }
 }
 
-module "foo" {
-  source = "github.com/foo/bar?refs=tag/v0.1.0"
+module "foo_bar" {
+  source = "github.com/github/bar?ref=tag/v0.1.0"
 
   id   = "1234567890"
   name = "baz"

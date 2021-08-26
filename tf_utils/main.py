@@ -7,20 +7,20 @@ from tf_utils import utils
 
 def help(command=None):
     default = (
-        "Usage: tf-utils command [path]\n" +
-        "\tcommand: unused | docs\n" +
-        "\tpath: A path to the module root to analyze. " +
-        "Default: current directory."
+        "Usage: tf-utils command [path]\n"
+        + "\tcommand: unused | docs\n"
+        + "\tpath: A path to the module root to analyze. "
+        + "Default: current directory."
     )
     unused = (
-        "Usage: tf-utils docs [path]\n" +
-        "\tpath: A path to the module root to analyze. " +
-        "Default: current directory."
+        "Usage: tf-utils docs [path]\n"
+        + "\tpath: A path to the module root to analyze. "
+        + "Default: current directory."
     )
     docs = (
-        "Usage: tf-utils unused [path]\n" +
-        "\tpath: A path to the module root to analyze. " +
-        "Default: current directory."
+        "Usage: tf-utils unused [path]\n"
+        + "\tpath: A path to the module root to analyze. "
+        + "Default: current directory."
     )
     help_docs = {
         "default": default,
@@ -41,12 +41,12 @@ def main():
     except IndexError:
         root = "."
 
-    if 'help' in root:
+    if "help" in root:
         return help(command)
 
-    if command == 'unused':
+    if command == "unused":
         return unused_variables.find_unused_variables_in_tree(root)
-    elif command == 'docs':
+    elif command == "docs":
         modules = utils.find_tf_modules(root)
         module_items = gen_docs.get_all_vars_and_outs(modules)
         rows = gen_docs.format_for_table(module_items)
