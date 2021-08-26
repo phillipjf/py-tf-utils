@@ -1,7 +1,7 @@
 locals {
-  a_string      = "my_test_local"
-  using_a_local = replace(local.a_string, "_", "-")
-  using_a_var   = format("Using var: %s", var.string_2)
+  a_string             = "my_test_local"
+  unused_using_a_local = replace(local.a_string, "_", "-")
+  unused_using_a_var   = format("Using var: %s", var.string_2)
 }
 
 module "foo" {
