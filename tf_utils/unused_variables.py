@@ -5,10 +5,7 @@ import sys
 
 import hcl2 as hcl
 
-ITEM_MAP = {
-    'locals': 'local',
-    'variables': 'var'
-}
+ITEM_MAP = {"locals": "local", "variables": "var"}
 
 
 def get_items_in_file(path, item_type):
@@ -20,11 +17,11 @@ def get_items_in_file(path, item_type):
         raise ValueError(f"Error loading Terraform from {path}: {err}")
 
     try:
-        if item_type == 'variables':
-            variables = [str(list(v.keys())[0]) for v in tf_definitions['variable']]
+        if item_type == "variables":
+            variables = [str(list(v.keys())[0]) for v in tf_definitions["variable"]]
             return set(variables)
-        elif item_type == 'locals':
-            _locals = tf_definitions.get('locals', [])
+        elif item_type == "locals":
+            _locals = tf_definitions.get("locals", [])
             if _locals:
                 _locals = _locals[0].keys()
             return set(_locals)
@@ -69,8 +66,9 @@ def find_unused_items_in_module(dirname, item_type):
 
 def find_unused_variables_in_tree(root):
     for mod_root, _, filenames in os.walk(root):
-        if (mod_root.startswith('./terraform.tfstate.d') or
-            mod_root.startswith('./.terraform')):
+        if mod_root.startswith("./terraform.tfstate.d") or mod_root.startswith(
+            "./.terraform"
+        ):
             continue
         if not any(f.endswith(".tf") for f in filenames):
             continue

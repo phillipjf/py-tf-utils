@@ -1,8 +1,8 @@
 import os
 
 
-def find_tf_modules(root='.'):
-    ignored_directories = ['/terraform.tfstate.d', '/.terraform', '/.git']
+def find_tf_modules(root="."):
+    ignored_directories = ["/terraform.tfstate.d", "/.terraform", "/.git"]
     modules = {}
     for mod_root, _, filenames in os.walk(root):
         # Ignore select directories

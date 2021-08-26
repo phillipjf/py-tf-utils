@@ -21,7 +21,7 @@ def get_all_vars_and_outs(modules):
     all_vars_and_outs = {}
 
     for module, files in modules.items():
-        values = {'variable': [], 'output': []}
+        values = {"variable": [], "output": []}
         for file in files:
             with open(os.path.join(module, file)) as f:
                 parsed = hcl.loads(f.read())
@@ -38,10 +38,7 @@ def format_output_for_table(values):
     rows = []
     for value in values:
         key, val = list(value.items())[0]
-        row = [
-            key,
-            val.get('description', [''])[0]
-        ]
+        row = [key, val.get("description", [""])[0]]
         rows.append(row)
 
     return rows
@@ -53,10 +50,10 @@ def format_variable_for_table(values):
         key, val = list(value.items())[0]
         row = [
             key,
-            val.get('description', [''])[0],
-            val.get('type', [''])[0],
-            val.get('default', [''])[0],
-            not bool(val.get('default', None))
+            val.get("description", [""])[0],
+            val.get("type", [""])[0],
+            val.get("default", [""])[0],
+            not bool(val.get("default", None)),
         ]
         rows.append(row)
 
@@ -75,9 +72,9 @@ def format_for_table(module_items):
 
 def generate_docs(table_items):
     for module, items in table_items.items():
-        header = module.lstrip('./')
+        header = module.lstrip("./")
         print(f"## {header}")
         for _type, rows in items.items():
             print(f"### {_type}")
-            headers = globals().get(_type+'_headers')
-            print(tabulate(rows, headers, tablefmt='pipe'))
+            headers = globals().get(_type + "_headers")
+            print(tabulate(rows, headers, tablefmt="pipe"))
