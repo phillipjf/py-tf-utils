@@ -1,35 +1,29 @@
-variable unquoted {}
-
-variable string_3 {
-  default = ""
+// It's string number one.
+variable "unused_string_1" {
+  default = "bar"
 }
 
-variable string_2 {
+variable "string_2" {
   description = "It's string number two."
   type        = string
 }
 
-// It's string number one.
-variable string_1 {
-  default = "bar"
+variable "unused_string_3" {
+  default = ""
 }
 
-variable map_3 {
-  default = {}
-}
-
-variable map_of_strings {
+variable "unused_map_of_strings" {
   description = "It's a map of strings."
   type        = map(string)
 }
 
-variable map_of_any {
+variable "unused_map_of_any" {
   description = "It's a map of any."
   type        = map(any)
 }
 
 // It's map number one.
-variable map_1 {
+variable "unused_map_1" {
   default = {
     a = 1
     b = 2
@@ -39,23 +33,27 @@ variable map_1 {
   type = map(string)
 }
 
-variable list_3 {
-  default = []
-}
-
-variable list_2 {
-  description = "It's list number two."
-  type        = list(string)
+variable "unused_map_2" {
+  default = {}
 }
 
 // It's list number one.
-variable list_1 {
+variable "unused_list_1" {
   default = ["a", "b", "c"]
   type    = list(string)
 }
 
+variable "unused_list_2" {
+  description = "It's list number two."
+  type        = list(string)
+}
+
+variable "unused_list_3" {
+  default = []
+}
+
 // A variable with pipe in the description
-variable input_with_pipe {
+variable "unused_input_with_pipe" {
   description = "It includes v1 | v2 | v3"
   default     = "v1"
 }
