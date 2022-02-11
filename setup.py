@@ -16,7 +16,7 @@ install_requires = get_requirements()
 
 setuptools.setup(
     name="py-tf-utils",
-    version="0.2.0",
+    version="0.2.1",
     author="Phillip Ferentinos",
     author_email="phillip.jf@gmail.com",
     description="Various Terraform Utilities",
