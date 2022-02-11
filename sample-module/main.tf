@@ -34,3 +34,39 @@ module "foo_bar" {
     Date-Created = "20180101"
   }
 }
+
+module "archive_qp" {
+  source = "https://example.com/vpc-module?archive=zip"
+}
+
+module "archive_qps" {
+  source = "https://example.com/vpc-module?fizz=buzz&archive=zip"
+}
+
+module "archive_zip" {
+  source = "https://example.com/vpc-module.zip"
+}
+
+module "archive_tarbz2" {
+  source = "https://example.com/vpc-module.tar.bz2"
+}
+
+module "archive_tbz2" {
+  source = "https://example.com/vpc-module.tbz2"
+}
+
+module "archive_targz" {
+  source = "https://example.com/vpc-module.tar.gz"
+}
+
+module "archive_tgz" {
+  source = "https://example.com/vpc-module.tgz"
+}
+
+module "archive_tarxz" {
+  source = "https://example.com/vpc-module.tar.xz"
+}
+
+module "archive_txz" {
+  source = "https://example.com/vpc-module.txz"
+}
